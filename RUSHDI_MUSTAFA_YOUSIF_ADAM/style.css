@@ -1,0 +1,233 @@
+:root {
+    --fca-green: #8cc63f;
+    --dark-green: #3d5a1b;
+    --error-red: #e63946;
+    --success-green: #2a9d8f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Prevents the whole page from scrolling */
+body {
+    background-color: #f4f4f9;
+    height: 100vh;
+    overflow: hidden; 
+}
+
+/* ──────────────────────────────────────── */
+/*               LANDING PAGE               */
+/* ──────────────────────────────────────── */
+
+.landing {
+    background-color: var(--fca-green);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Stays on top */
+}
+
+.landing .logo-circle {
+    background: white;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.fca-img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+}
+
+.btn-register {
+    background-color: white;
+    color: var(--fca-green);
+    border: none;
+    padding: 12px 60px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.btn-register:hover {
+    transform: scale(1.05);
+}
+
+/* ──────────────────────────────────────── */
+/*               FORM PAGE                 */
+/* ──────────────────────────────────────── */
+
+.form-container {
+    display: none; /* Controlled by JS */
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-flex {
+    display: flex;
+    flex-direction: row;
+    height: 100vh; /* Fixed viewport height */
+    width: 100%;
+}
+
+/* FIXED SIDEBAR */
+.form-left {
+    background-color: var(--fca-green);
+    width: 380px; /* Fixed width */
+    flex-shrink: 0; /* Won't squeeze */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+
+.form-left .logo-circle {
+    background: white;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+/* SCROLLABLE CONTENT */
+.form-content {
+    flex-grow: 1;
+    padding: 60px;
+    background-color: white;
+    height: 100vh;
+    overflow-y: auto; /* Only this side scrolls */
+}
+
+.form-content h2 {
+    text-align: center;
+    color: var(--dark-green);
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.radio-group {
+    display: flex;
+    gap: 80px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.radio-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-submit {
+    grid-column: 2;
+    background-color: var(--fca-green);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+/* Rule: Gender radio buttons arranged horizontally */
+.radio-group {
+    display: flex;
+    flex-direction: row; /* Force horizontal */
+    gap: 30px;
+    border: none; /* Cleaner look for the horizontal rule */
+}
+
+
+/* ──────────────────────────────────────── */
+/*            VALIDATION STATES             */
+/* ──────────────────────────────────────── */
+
+input.error, select.error {
+    border: 2px solid var(--error-red) !important;
+    background-color: #fffafa;
+}
+
+input.success, select.success {
+    border: 2px solid var(--success-green) !important;
+    background-color: #f7fffb;
+}
+
+.error-msg {
+    color: var(--error-red);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Success Banner Sticky Behavior */
+.success-banner {
+    grid-column: 1 / -1;
+    position: sticky;
+    top: -60px; /* Adjust based on padding */
+    z-index: 10;
+    margin-bottom: 30px;
+}
